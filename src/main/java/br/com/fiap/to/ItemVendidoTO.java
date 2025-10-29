@@ -1,16 +1,21 @@
 package br.com.fiap.to;
 
-public class ItemVendido {
+import jakarta.validation.constraints.NotNull;
+
+public class ItemVendidoTO {
     //atributos
+    @NotNull
     private Long codVenda;
+    @NotNull
     private Long codRemedio;
+    @NotNull
     private int quantidade;
 
     //construtores
-    public ItemVendido() {
+    public ItemVendidoTO() {
     }
 
-    public ItemVendido(Long codVenda, Long codRemedio, int quantidade) {
+    public ItemVendidoTO(Long codVenda, Long codRemedio, int quantidade) {
         this.codVenda = codVenda;
         this.codRemedio = codRemedio;
         this.quantidade = quantidade;

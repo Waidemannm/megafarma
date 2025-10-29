@@ -22,6 +22,7 @@ public class ClienteDAO {
                     cliente.setCpf(rs.getString("cpf"));
                     cliente.setEmail(rs.getString("email"));
                     cliente.setDataDeNascimento(rs.getDate("data_de_nascimento").toLocalDate());
+                    clientes.add(cliente);
                 }
             }else{
                 return null;
@@ -58,7 +59,7 @@ public class ClienteDAO {
     }
 
     public ClienteTO save(ClienteTO cliente){
-        String sql = "insert into ddd_cliente (nome, cpf, email, data_de_nascimento) values (?,?,?,?)";
+        String sql = "insert into ddd_clientes (nome, cpf, email, data_de_nascimento) values (?,?,?,?)";
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getCpf());
@@ -70,7 +71,41 @@ public class ClienteDAO {
                 return null;
             }
         }catch (SQLException e) {
-            System.out.println("Erro na consulta: " + e.getMessage());
+            System.out.println("Erro ao salver: " + e.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection();
+        }
+        return null;
+    }
+
+    public boolean delete(Long codigo){
+        ClienteTO cliente = new ClienteTO();
+        String sql = "delete from ddd_clientes where codigo = ?";
+        try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
+            ps.setLong(1, cliente.getCodigo());
+            return ps.executeUpdate() > 0;
+        }catch (SQLException e) {
+            System.out.println("Erro na excluir: " + e.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection();
+        }
+        return false;
+    }
+
+    public ClienteTO update(ClienteTO cliente){
+        String sql = "update ddd_clientes nome = ?, cpf = ?, email = ?, data_de_nascimento = ? set where = codigo = ?";
+        try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getCpf());
+            ps.setString(3, cliente.getEmail());
+            ps.setDate(4, Date.valueOf(cliente.getDataDeNascimento()));
+            if (ps.executeUpdate() > 0) {
+                return cliente;
+            }else {
+                return null;
+            }
+        }catch (SQLException e) {
+            System.out.println("Erro ao atualizar: " + e.getMessage());
         } finally {
             ConnectionFactory.closeConnection();
         }

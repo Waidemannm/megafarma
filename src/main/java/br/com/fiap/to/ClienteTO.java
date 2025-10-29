@@ -1,13 +1,20 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
 import java.time.LocalDate;
 
 public class ClienteTO {
     //atributos
     private Long codigo;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String cpf;
+    @NotBlank
     private String Email;
+    @PastOrPresent
     private LocalDate dataDeNascimento;
     //construtores
     public ClienteTO() {
