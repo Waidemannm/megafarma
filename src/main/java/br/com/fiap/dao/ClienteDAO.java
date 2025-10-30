@@ -99,6 +99,7 @@ public class ClienteDAO {
             ps.setString(2, cliente.getCpf());
             ps.setString(3, cliente.getEmail());
             ps.setDate(4, Date.valueOf(cliente.getDataDeNascimento()));
+            ps.setLong(5, cliente.getCodigo());
             if (ps.executeUpdate() > 0) {
                 return cliente;
             }else {
