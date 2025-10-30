@@ -39,6 +39,7 @@ public class ClienteDAO {
         ClienteTO cliente = new ClienteTO();
         String sql = "select * from ddd_clientes where codigo = ?";
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
+            ps.setLong(1, codigo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 cliente.setCodigo(rs.getLong("codigo"));
