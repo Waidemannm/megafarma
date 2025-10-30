@@ -94,7 +94,7 @@ public class ClienteDAO {
     }
 
     public ClienteTO update(ClienteTO cliente){
-        String sql = "update ddd_clientes set nome = ?, cpf = ?, email = ?, data_de_nascimento = ? set where = codigo = ?";
+        String sql = "update ddd_clientes set nome = ?, cpf = ?, email = ?, data_de_nascimento = ?  where = codigo = ?";
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getCpf());
