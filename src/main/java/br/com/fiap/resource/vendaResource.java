@@ -62,6 +62,7 @@ public class vendaResource {
     @Path("/{codigo}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response update(@Valid VendaTO venda, @PathParam("codigo") Long codigo){
+        venda.setCodigo(codigo);
         VendaTO resultado = vendaBO.update(venda);
         Response.ResponseBuilder response = null;
         if (resultado != null){

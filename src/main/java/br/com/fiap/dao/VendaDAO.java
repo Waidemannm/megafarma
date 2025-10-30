@@ -76,7 +76,7 @@ public class VendaDAO {
     }
 
     public VendaTO update(VendaTO venda){
-        String sql = "update ddd_vendas set data_da_venda = ?, codcliente = ?  where codigo = ?";
+        String sql = "update ddd_vendas set data_da_venda = ?, codcliente = ? where codigo = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ps.setDate(1, Date.valueOf(venda.getDataDaVenda()));
             ps.setLong(2, venda.getCodCliente());
