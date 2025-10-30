@@ -82,7 +82,7 @@ public class ClienteDAO {
         ClienteTO cliente = new ClienteTO();
         String sql = "delete from ddd_clientes where codigo = ?";
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
-            ps.setLong(1, cliente.getCodigo());
+            ps.setLong(1, codigo);
             return ps.executeUpdate() > 0;
         }catch (SQLException e) {
             System.out.println("Erro na excluir: " + e.getMessage());
