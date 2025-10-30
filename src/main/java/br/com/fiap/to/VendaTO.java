@@ -1,5 +1,6 @@
 package br.com.fiap.to;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 
@@ -9,6 +10,7 @@ public class VendaTO {
     //atributos
     private Long codigo;
     @PastOrPresent
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataDaVenda;
     @NotNull
     private Long codCliente;

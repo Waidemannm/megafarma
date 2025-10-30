@@ -57,7 +57,7 @@ public class VendaDAO {
     }
 
     public VendaTO save(VendaTO venda){
-        String sql = "insert into ddd_vendas data_da_venda, codcliente values (?,?)";
+        String sql = "insert into ddd_vendas (data_da_venda, codcliente) values (?,?)";
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ps.setDate(1, Date.valueOf(venda.getDataDaVenda()));
             ps.setLong(2, venda.getCodCliente());

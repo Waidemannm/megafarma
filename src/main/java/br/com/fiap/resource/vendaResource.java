@@ -12,12 +12,12 @@ import java.util.ArrayList;
 @Path("/venda")
 public class vendaResource {
     //atributos
-    private VendaBO vendaBO;
+    private VendaBO vendaBO = new VendaBO();
 
     //metodos particulares
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findaAll(){
+    public Response findAll(){
         ArrayList<VendaTO> resultado = vendaBO.findAll();
         Response.ResponseBuilder response = null;
         if (resultado != null) {
