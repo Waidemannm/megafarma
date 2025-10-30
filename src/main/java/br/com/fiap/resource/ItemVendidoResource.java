@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @Path("/itemvendido")
 public class ItemVendidoResource {
     //atributos
-    private ItemVendidoBO itemVendidoBO;
+    private ItemVendidoBO itemVendidoBO = new ItemVendidoBO();
     //métodos particulares
 
     @GET
