@@ -1,5 +1,6 @@
 package br.com.fiap.dao;
 
+import br.com.fiap.to.RemedioTO;
 import br.com.fiap.to.VendaTO;
 
 import java.sql.Date;
@@ -40,7 +41,7 @@ public class VendaDAO {
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ps.setLong(1, codigo);
             ResultSet rs = ps.executeQuery();
-            if (rs != null){
+            if (rs.next()){
                 venda.setCodigo(rs.getLong("codigo"));
                 venda.setDataDaVenda(rs.getDate("data_da_venda").toLocalDate());
                 venda.setCodCliente(rs.getLong("codcliente"));
